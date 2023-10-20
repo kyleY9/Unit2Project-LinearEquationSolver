@@ -15,18 +15,42 @@ public class LinearEquation {
 
     // methods
     public String equation() {
+        int numerator = Math.abs(y2 - y1);
+        int denominator = Math.abs(x2 - x1);
+        double slope = slope();
+        String yIntercept = "";
 
+        if (yIntercept(slope) > 0 ) {
+             yIntercept = " + " + yIntercept(slope);
+        } else {
+             yIntercept = " - " + yIntercept(slope);
+        }
+
+        if (Math.floor(slope) - slope == 0) {
+            if (slope > 0) {
+                return "y = " + slope + "x" + yIntercept;
+            } else {
+                return "y = -" + slope + "x" + yIntercept;
+            }
+        } else {
+            if (slope > 0) {
+                return "y = " + numerator + "/" + denominator + "x" + yIntercept;
+            } else {
+                return "y = -" + numerator + "/" + denominator + "x" + yIntercept;
+            }
+        }
     }
-
+    // the slope-intercept equation in terms of the y-intercept (b) is b=y-mx
+    public double yIntercept(double slopeInput) {
+        return y1 - slopeInput*x1;
+    }
     public double distance() {
-        double distance = roundedToHundreth()
+        return roundedToHundredth(Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2)));
     }
     public double slope() {
-        double slope = roundedToHundreth((y2 - y1) / (x2 - x1));
-        return slope;
+        return roundedToHundredth((double) (y2-y1) / (x2-x1));
     }
-    public double roundedToHundreth(double toRound) {
+    public double roundedToHundredth(double toRound) {
         return Math.round(toRound*100.0)/100.0;
     }
-
 }
