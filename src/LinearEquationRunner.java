@@ -29,6 +29,6 @@ public class LinearEquationRunner {
         System.out.println("\n" + obj.lineInfo());
         System.out.print("\nEnter any value for x: ");
         double xValue = scan.nextDouble();
-        System.out.println("\n" + obj.coordinateForX(xValue));
+        System.out.println("When x = " + xValue + ", the coordinate is " + obj.coordinateForX(xValue));
     }
 }
