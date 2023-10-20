@@ -14,7 +14,8 @@ public class LinearEquation {
     }
 
     // methods
-    public String equation() {
+    public String equation() {  // prepare for many if statements here~
+        // variable initializations (only for this method)
         int numerator = Math.abs(y2 - y1);
         int denominator = Math.abs(x2 - x1);
         double slope = slope();
@@ -25,7 +26,19 @@ public class LinearEquation {
         } else {
              yIntercept = " - " + yIntercept(slope);
         }
+        // if statement for horizontal lines (y1=y2)
+        if (y1 == y2) {
+            return "y = " + yIntercept;
+        }
 
+        // if statement for whether the slope is -1 or 1
+        if (slope == -1) {
+            return "y = -x " + yIntercept;
+        } else if (slope == 1) {
+            return "y = x " + yIntercept;
+        }
+
+        // if statement for whether the slope is a whole number or a fraction
         if (Math.floor(slope) - slope == 0) {
             if (slope > 0) {
                 return "y = " + slope + "x" + yIntercept;
@@ -50,6 +63,17 @@ public class LinearEquation {
     public double slope() {
         return roundedToHundredth((double) (y2-y1) / (x2-x1));
     }
+
+    public String coordinateForX(double xValue) {
+        double yValue = xValue*slope() + yIntercept(slope());
+        return "(" + xValue + ", " + yValue + ")";
+    }
+
+    public String lineInfo() {
+        return "Points: (" + x1 + ", " + y1 + "), " + "(" + x2 + ", " + y2 + ")\nEquation: " + equation() + "\nSlope: " + slope() + "\ny-intercept: " + yIntercept(slope()) + "\nDistance: " + distance();
+    }
+
+    // helper method
     public double roundedToHundredth(double toRound) {
         return Math.round(toRound*100.0)/100.0;
     }
