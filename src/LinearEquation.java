@@ -42,11 +42,7 @@ public class LinearEquation {
 
         // if statement for whether the slope is a whole number or a fraction
         if (Math.floor(slope) - slope == 0) {
-            if (slope > 0) {
-                return "y = " + (int) slope + "x" + yIntercept;
-            } else {
-                return "y = -" + (int) Math.abs(slope) + "x" + yIntercept;
-            }
+            return "y = " + (int) slope + "x" + yIntercept;
         } else {
             if (slope > 0) {
                 return "y = " + numerator + "/" + denominator + "x" + yIntercept;
